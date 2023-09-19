@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import MainButtons from './components/dashboard/MainButtons';
+import PacienteForm from './views/PacienteForm';
+import EstudioForm from './views/EstudioForm';
+
+
+// Aquí puedes importar tus otros formularios...
+
+const { PUBLIC_URL } = process.env;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter basename={PUBLIC_URL}>
+      <Routes>
+        <Route path="/" element={<MainButtons />} />
+        <Route path="/registro-pacientes" element={<PacienteForm />} />
+        <Route path="/registro-estudio" element={<EstudioForm />} /> 
+
+        {/* <Route path="/consulta-pacientes" element={<ConsultaPacientes />} /> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
